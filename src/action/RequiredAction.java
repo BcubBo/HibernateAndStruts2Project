@@ -26,7 +26,7 @@ public class RequiredAction extends ActionSupport{
 	private static final long serialVersionUID = 5294380527260919605L;
 	Session session = HibernateSessionFactory.getSession();
 	Transaction ts = session.getTransaction();
-	
+	EDoc_Entry enli = new EDoc_Entry();
 	
 	@SuppressWarnings("unchecked")
 	public String execute() {
@@ -42,10 +42,10 @@ public class RequiredAction extends ActionSupport{
 		
 	}
 
-	public String add() {
+	public String add(EDoc_Entry enli) {
 		
 		
-		if(new daoIMPL.ActionServiceDaoImpl().add()) {
+		if(new daoIMPL.ActionServiceDaoImpl().add(enli)) {
 			//成功
 			return SUCCESS;
 			
@@ -91,6 +91,14 @@ public class RequiredAction extends ActionSupport{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public EDoc_Entry getEnli() {
+		return enli;
+	}
+
+	public void setEnli(EDoc_Entry enli) {
+		this.enli = enli;
 	}
 	
 	

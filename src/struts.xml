@@ -13,9 +13,6 @@
 	<!-- 字节 -->
 	<constant name="struts.multipart.maxSize" value="5000000"/>
 	<package name="default" namespace="/" extends="json-default">
-		<action name="list" class="action.RequiredAction" method="list">
-			<result>/list.jsp</result>
-		</action>
 	</package>
 <include file="struts-action.xml"></include>
 </struts>

@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -21,19 +23,23 @@ public class ActionServiceDaoImpl implements ActionService{
 	Transaction ts = session.getTransaction();
 	private List<EDoc_Entry> infosList ;
 	private List<EDoc_Category>	CategorysList;
+	Logger logger =(Logger)LogManager.getLogger();
 	@Override
-	public boolean add() {
+	public boolean add(EDoc_Entry enli) {
 		try {
 					ts.begin();
 					EDoc_Entry ee1 = new EDoc_Entry();
 					Set<EDoc_Entry> eeSet = new HashSet<EDoc_Entry>();
 					ee1.setCategoryid(1);
 					ee1.setCreatedate(new Date());
-					ee1.setTitle("testTitle");
+					logger.debug("enli中:"+enli.getTitle());
+					ee1.setTitle(enli.getTitle());
+					ee1.setSummary(enli.getSummary());
+					ee1.setUploaduser(enli.getUploaduser());
 					eeSet.add(ee1);
 					EDoc_Category ec1 = new EDoc_Category();
 					ec1.setDocEntrys(eeSet);
-					ec1.setName("test1");
+					ec1.setName("testTitle2");
 					ee1.setDocCategory(ec1);
 					session.save(ec1);
 					ts.commit();

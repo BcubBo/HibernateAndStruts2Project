@@ -47,23 +47,17 @@
 <s:form action="%{path}query/query.action">
 
 		<s:select label="查询的类别IT类型" 
-			name="categorys.id"
+			name="id"
 			list="CategorysList"
 			listKey="id"
 			listValue="name"
 		></s:select>
-
-		<s:select label="查询的类别IT类型" 
-			name="id"
-			list="CategorysList"
-			listKey="id"
-			listValue="id"
-		></s:select>
-
-
-	<s:submit></s:submit>
+	<s:submit value="查询"></s:submit>
 </s:form>
-<input type="button" name="add" value="添加"/>
+<s:form action="%{path}/add.jsp">
+	<input type="submit" name="add" value="添加信息"/>
+</s:form>
+
 	<table >
 	
 		<tr>
@@ -94,7 +88,7 @@
 			</td>
 			<td>
 			<strong>
-				<s:property value="#it.name"/>
+				<s:property value="#it.title"/>
 			</strong>
 			</td>
 			<td>
@@ -103,10 +97,15 @@
 			</strong>
 			</td>
 			<td>
-			<td>
 			<strong>
 				<s:property value="#it.uploaduser"/>
-			</strong>			
+			</strong>	
+			</td>
+			<td>
+			<strong>
+				<s:date name="#it.createdate" format="yyyy-MM-dd"/>
+			</strong>	
+			</td>					
 		</tr>
 		</s:iterator>
 	
