@@ -17,5 +17,13 @@
 				<result name="input">/add.jsp</result>
 		</action>
 	</package>
+	<package name="entry" namespace="/add" extends="default">
+
+		<action name="add" class="action.RequiredAction" method="add">
+				<result>/list.jsp</result>
+				<result name="input">/add.jsp</result>
+		</action>
+	</package>
+	
 
 </struts>

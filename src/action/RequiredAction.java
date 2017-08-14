@@ -26,7 +26,7 @@ public class RequiredAction extends ActionSupport{
 	private static final long serialVersionUID = 5294380527260919605L;
 	Session session = HibernateSessionFactory.getSession();
 	Transaction ts = session.getTransaction();
-	EDoc_Entry enli = new EDoc_Entry();
+	private EDoc_Entry enli;
 	
 	@SuppressWarnings("unchecked")
 	public String execute() {

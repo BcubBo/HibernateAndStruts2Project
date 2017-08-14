@@ -8,77 +8,45 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>添加页面</title>
-<style type="text/css">
-
-	td{
-		
-		 border: 1px green solid;
-		 text-align: center;
-	
-	}
-
-	
-	strong{
-	
-		color:yellowgreen;
-		font-size:20px;
-		
-	
-	}
-	
-	table{
-		
-		align:center; 
-		border:3px black solid;
-		width:auto;
-		height:auto;
-	
-	
-	
-	}
-
-	
-	
-	
-
-</style>
 </head>
 <body>
-<s:form action="%{path}/query/add.action">
+<form action="add/add.action">
 <table >
 		<tr>
 			<td>
 			<strong>
-				<input type="text" name="enli.title">
+				标题名称（*）<input type="text" name="enli.title">
 			</strong>
 			</td>
 		</tr>
 		<tr>
 			<td>
 			<strong>
-				<input type="text" name="enli.summary">
+				摘要（*）<input type="text" name="enli.summary">
 			</strong>
 			</td>
 		</tr>
 		<tr>
 			<td>
 			<strong>
-				<input type="text" name="enli.uploaduser">
+				上传人<input type="text" name="enli.uploaduser">
 			</strong>
 			</td>
 		</tr>
 		<tr>
 			<td>
 			<strong>
-				<ss:datetimepicker id="datePicker" cssClass="text" name="enli.createdate" ></ss:datetimepicker>
+				上传时间（*）<ss:datetimepicker id="datePicker" cssClass="text" name="enli.createdate" ></ss:datetimepicker>
 			</strong>	
 			</td>					
 		</tr>
 
 
 	</table>
-	<s:submit value="提交"></s:submit><s:url action="%{path}/query/list" value="返回"></s:url>
+	<s:submit value="提交"></s:submit>
+	
 
-</s:form>
+</form>
+<s:form action="%{path}/query/list.action"><s:submit value="返回"></s:submit></s:form>
 </body>
 </html>
