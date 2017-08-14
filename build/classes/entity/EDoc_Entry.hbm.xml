@@ -3,11 +3,11 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-8-14 10:28:55 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="entity.EDoc_Entry" table="EDOC_ENTRY">
+    <class name="entity.EDoc_Entry" table="EDOC_ENTRY" lazy="false">
         <id name="id" type="int" >
             <column name="ID" />
-            <generator class="sequence" >
-            	<param name="sequence">EDOC_ENTRY_SEQ</param>
+            <generator class="increment" >
+<!--             	<param name="sequence">EDOC_ENTRY_SEQ</param> -->
             </generator>
         </id>
 <!--         <property name="categoryid" type="int">
@@ -25,7 +25,7 @@
         <property name="createdate" type="java.util.Date">
             <column name="CREATEDATE" />
         </property>
-        <many-to-one name="docCategory" class="entity.EDoc_Category" fetch="join">
+        <many-to-one name="docCategory" class="entity.EDoc_Category" fetch="join" lazy="false" cascade="all">
             <column name="CATEGORYID" />
         </many-to-one>
     </class>

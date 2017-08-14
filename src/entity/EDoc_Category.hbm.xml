@@ -3,20 +3,20 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-8-14 10:28:55 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="entity.EDoc_Category" table="EDOC_CATEGORY">
+    <class name="entity.EDoc_Category" table="EDOC_CATEGORY" lazy="false">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="sequence">
+            <generator class="increment">
             
-            	<param name="sequence">EDoc_CATE_SEQ</param>
+<!--             	<param name="sequence">EDoc_CATE_SEQ</param> -->
             
             </generator>
             
         </id>
-        <property name="name" type="java.lang.String">
+        <property name="name" type="java.lang.String" not-null="false">
             <column name="NAME" />
         </property>
-        <set name="docEntrys" table="EDOC_ENTRY" inverse="false">
+        <set name="docEntrys" table="EDOC_ENTRY" inverse="false" lazy="false" cascade="all">
             <key>
                 <column name="CATEGORYID" />
             </key>
