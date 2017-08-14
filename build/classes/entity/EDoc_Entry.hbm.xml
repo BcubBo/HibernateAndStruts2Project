@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-8-14 10:28:55 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="entity.EDoc_Entry" table="EDOC_ENTRY">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="categoryid" type="int">
+            <column name="CATEGORYID" />
+        </property>
+        <property name="title" type="java.lang.String">
+            <column name="TITLE" />
+        </property>
+        <property name="summary" type="java.lang.String">
+            <column name="SUMMARY" />
+        </property>
+        <property name="uploaduser" type="java.lang.String">
+            <column name="UPLOADUSER" />
+        </property>
+        <property name="createdate" type="java.util.Date">
+            <column name="CREATEDATE" />
+        </property>
+        <many-to-one name="docCategory" class="entity.EDoc_Category" fetch="join">
+            <column name="ID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

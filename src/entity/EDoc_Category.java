@@ -1,8 +1,17 @@
 package entity;
 
-public class DocCategory {
+import java.util.Set;
+
+public class EDoc_Category {
 	private int id;
 	private String name;
+	private Set<EDoc_Entry> docEntrys;
+	public Set<EDoc_Entry> getDocEntrys() {
+		return docEntrys;
+	}
+	public void setDocEntrys(Set<EDoc_Entry> docEntrys) {
+		this.docEntrys = docEntrys;
+	}
 	public int getId() {
 		return id;
 	}

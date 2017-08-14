@@ -2,7 +2,7 @@ package entity;
 
 import java.util.Date;
 
-public class DocEntry {
+public class EDoc_Entry {
 	
 	private int id;
 	private int categoryid;
@@ -10,6 +10,13 @@ public class DocEntry {
 	private String summary;
 	private String uploaduser;
 	private Date createdate;
+	private EDoc_Category docCategory;
+	public EDoc_Category getDocCategory() {
+		return docCategory;
+	}
+	public void setDocCategory(EDoc_Category docCategory) {
+		this.docCategory = docCategory;
+	}
 	public int getId() {
 		return id;
 	}
