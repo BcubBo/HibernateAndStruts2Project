@@ -16,11 +16,7 @@
   <property name="hibernate.format_sql">true</property>
   <property name="hibernate.default_schema">BCUBBO2</property>
   <property name="hibernate.connection.autocommit">true</property>
-  <mapping resource="entity/HouseUser.hbm.xml"/>
-  <mapping resource="entity/House.hbm.xml"/>
-  <mapping resource="entity/HouseType.hbm.xml"/>
-  <mapping resource="entity/District.hbm.xml"/>
-  <mapping resource="entity/Street.hbm.xml"/>
-  <mapping resource="entity/HousePicture.hbm.xml"/>
+  <mapping resource="entity/EDoc_Category.hbm.xml"/>
+  <mapping resource="entity/EDoc_Entry.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

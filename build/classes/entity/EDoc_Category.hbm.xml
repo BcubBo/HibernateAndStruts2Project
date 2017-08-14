@@ -6,14 +6,19 @@
     <class name="entity.EDoc_Category" table="EDOC_CATEGORY">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="sequence">
+            
+            	<param name="sequence">EDoc_CATE_SEQ</param>
+            
+            </generator>
+            
         </id>
         <property name="name" type="java.lang.String">
             <column name="NAME" />
         </property>
-        <set name="docEntrys" table="EDOC_ENTRY" inverse="false" lazy="true">
+        <set name="docEntrys" table="EDOC_ENTRY" inverse="false">
             <key>
-                <column name="ID" />
+                <column name="CATEGORYID" />
             </key>
             <one-to-many class="entity.EDoc_Entry" />
         </set>

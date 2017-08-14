@@ -1,11 +1,12 @@
 package entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class EDoc_Category {
 	private int id;
 	private String name;
-	private Set<EDoc_Entry> docEntrys;
+	private Set<EDoc_Entry> docEntrys = new HashSet<EDoc_Entry>();
 	public Set<EDoc_Entry> getDocEntrys() {
 		return docEntrys;
 	}
