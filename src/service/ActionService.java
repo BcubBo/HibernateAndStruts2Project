@@ -9,7 +9,7 @@ public interface ActionService {
 	
 	
 	
-	public boolean add(EDoc_Entry enli) ;
+	public boolean addItem(EDoc_Entry enli) ;
 	public Map<String,Object> list(int id);
 	
 

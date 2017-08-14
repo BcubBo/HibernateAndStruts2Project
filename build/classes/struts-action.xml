@@ -8,7 +8,6 @@
 	<!-- 字节 -->
 	<package name="entry" namespace="/query" extends="default">
 		<action name="query" class="action.RequiredAction">
-		
 			<result>/list.jsp</result>
 			<result name="input">/add.jsp</result>
 		</action>
@@ -17,10 +16,10 @@
 				<result name="input">/add.jsp</result>
 		</action>
 	</package>
-	<package name="entry" namespace="/add" extends="default">
+	<package name="en" namespace="/add" extends="default">
 
-		<action name="add" class="action.RequiredAction" method="add">
-				<result>/list.jsp</result>
+		<action name="add" class="action.RequiredAction" method="addItem">
+				<result name="success">/list.jsp</result>
 				<result name="input">/add.jsp</result>
 		</action>
 	</package>

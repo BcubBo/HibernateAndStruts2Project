@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -27,7 +29,7 @@ public class RequiredAction extends ActionSupport{
 	Session session = HibernateSessionFactory.getSession();
 	Transaction ts = session.getTransaction();
 	private EDoc_Entry enli;
-	
+	Logger logger = (Logger)LogManager.getLogger();
 	@SuppressWarnings("unchecked")
 	public String execute() {
 		
@@ -45,8 +47,9 @@ public class RequiredAction extends ActionSupport{
 	public String add(EDoc_Entry enli) {
 		
 		
-		if(new daoIMPL.ActionServiceDaoImpl().add(enli)) {
+		if(new daoIMPL.ActionServiceDaoImpl().addItem(enli)) {
 			//成功
+			logger.debug("成功添加");
 			return SUCCESS;
 			
 		}else {

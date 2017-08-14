@@ -10,7 +10,7 @@
 <title>添加页面</title>
 </head>
 <body>
-<form action="add/add.action">
+<form action="${pageContext.request.contextPath }/add/add.action" method="post">
 <table >
 		<tr>
 			<td>
@@ -33,20 +33,15 @@
 			</strong>
 			</td>
 		</tr>
-		<tr>
-			<td>
-			<strong>
-				上传时间（*）<ss:datetimepicker id="datePicker" cssClass="text" name="enli.createdate" ></ss:datetimepicker>
-			</strong>	
-			</td>					
-		</tr>
-
 
 	</table>
-	<s:submit value="提交"></s:submit>
+	<input type="submit" value="提交"/>
 	
 
 </form>
-<s:form action="%{path}/query/list.action"><s:submit value="返回"></s:submit></s:form>
+<form action="${pageContext.request.contextPath }/query/list" method="post">
+	<input type="submit" value="返回"/>
+
+</form>
 </body>
 </html>

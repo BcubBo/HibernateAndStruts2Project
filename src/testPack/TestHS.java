@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -17,6 +19,7 @@ public class TestHS {
 	public static void main(String[] args) {
 		Session session = HibernateSessionFactory.getSession();
 		Transaction ts = session.getTransaction();
+		Logger logger = (Logger)LogManager.getLogger();
 		@SuppressWarnings("unchecked")
 		List<EDoc_Category> ecList = HibernateSessionFactory.getSession().createQuery("from EDoc_Category ec where ec.id = 1").list();
 		for(EDoc_Category ec:ecList) {
@@ -46,7 +49,8 @@ public class TestHS {
 			ec1.setDocEntrys(eeSet);
 			ec1.setName("test1");
 			ee1.setDocCategory(ec1);
-			session.save(ec1);
+			logger.debug(session.save(ec1));
+			
 			ts.commit();
 			
 			

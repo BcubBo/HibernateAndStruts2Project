@@ -25,7 +25,8 @@ public class ActionServiceDaoImpl implements ActionService{
 	private List<EDoc_Category>	CategorysList;
 	Logger logger =(Logger)LogManager.getLogger();
 	@Override
-	public boolean add(EDoc_Entry enli) {
+	public boolean addItem(EDoc_Entry enli) {
+		boolean flag = false;
 		try {
 					ts.begin();
 					EDoc_Entry ee1 = new EDoc_Entry();
@@ -43,20 +44,20 @@ public class ActionServiceDaoImpl implements ActionService{
 					ee1.setDocCategory(ec1);
 					session.save(ec1);
 					ts.commit();
-					return true;
+					flag = true;
 					
 					
 				}catch(Exception e) {
 					if(session!=null) {
 						ts.rollback();
+						flag =false;
 					}
 					e.printStackTrace();
-					return false;
 			
 				}
 		
 		
-		
+		return flag;
 
 	}
 
