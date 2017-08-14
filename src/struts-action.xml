@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Conifguration 2.3//EN" 
+	"D:\JARPack\struts2lib\struts-2.3.dtd">
+
+<struts>
+	
+	<!-- 字节 -->
+	<package name="entry" namespace="entry" extends="default">
+		<action name="infolist" class="action.RequiredAction" method="list">
+		
+			<result>/list.jsp</result>
+			<result name="input">/add.jsp</result>
+		</action>
+		<action name="add" class="action.EntryAction" method="add">
+		
+		
+		</action>
+	</package>
+
+</struts>

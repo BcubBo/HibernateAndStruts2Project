@@ -20,6 +20,5 @@
 		</interceptors>
 		<default-interceptor-ref name="myinterceptorstack" />
 	</package>
-<include file="struts-user.xml"></include>
-<include file="struts-house.xml"></include>
+<include file="struts-action.xml"></include>
 </struts>
