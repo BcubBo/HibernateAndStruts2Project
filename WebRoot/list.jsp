@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="s" uri="/struts-tags" %>
+    <%String path = request.getContextPath(); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,14 +35,7 @@
 	
 	
 	}
-	
-	body{
-	
-		background-image:url('/struts2Obj_1/image/21.gif');
-		background-repeat: repeat;
-		
-		
-}
+
 	
 	
 	
@@ -50,12 +44,25 @@
 </head>
 <body style="background-color:buttonface">
 
-	<s:select label="查询的类别IT类型" 
-		name="categorys.id"
-		list="CategorysList"
-		listKey="id"
-		listValue="name"
-	></s:select>
+<s:form action="%{path}query/query.action">
+
+		<s:select label="查询的类别IT类型" 
+			name="categorys.id"
+			list="CategorysList"
+			listKey="id"
+			listValue="name"
+		></s:select>
+
+		<s:select label="查询的类别IT类型" 
+			name="id"
+			list="CategorysList"
+			listKey="id"
+			listValue="id"
+		></s:select>
+
+
+	<s:submit></s:submit>
+</s:form>
 <input type="button" name="add" value="添加"/>
 	<table >
 	

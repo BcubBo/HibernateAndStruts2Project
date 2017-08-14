@@ -13,12 +13,9 @@
 	<!-- 字节 -->
 	<constant name="struts.multipart.maxSize" value="5000000"/>
 	<package name="default" namespace="/" extends="json-default">
-		<interceptors>
-			<interceptor-stack name="myinterceptorstack">
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-			</interceptor-stack>
-		</interceptors>
-		<default-interceptor-ref name="myinterceptorstack" />
+		<action name="list" class="action.RequiredAction" method="list">
+			<result>/list.jsp</result>
+		</action>
 	</package>
 <include file="struts-action.xml"></include>
 </struts>

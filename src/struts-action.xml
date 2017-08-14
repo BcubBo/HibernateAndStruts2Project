@@ -6,15 +6,15 @@
 <struts>
 	
 	<!-- 字节 -->
-	<package name="entry" namespace="entry" extends="default">
-		<action name="infolist" class="action.RequiredAction" method="list">
+	<package name="entry" namespace="/query" extends="default">
+		<action name="query" class="action.RequiredAction">
 		
 			<result>/list.jsp</result>
 			<result name="input">/add.jsp</result>
 		</action>
-		<action name="add" class="action.EntryAction" method="add">
-		
-		
+		<action name="add" class="action.RequiredAction" method="add">
+				<result>/list.jsp</result>
+				<result name="input">/add.jsp</result>
 		</action>
 	</package>
 

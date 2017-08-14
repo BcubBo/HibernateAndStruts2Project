@@ -45,10 +45,19 @@ public class RequiredAction extends ActionSupport{
 	public String add() {
 		
 		
+		if(new daoIMPL.ActionServiceDaoImpl().add()) {
+			//成功
+			return SUCCESS;
+			
+		}else {
+			//失败
+			return INPUT;
+			
+			
+		}
 		
 		
-		
-		return SUCCESS;
+	
 		
 		
 		

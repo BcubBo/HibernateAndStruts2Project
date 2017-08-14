@@ -58,7 +58,7 @@ public class ActionServiceDaoImpl implements ActionService{
 	public Map<String,Object> list(int id) {
 		
 		@SuppressWarnings("unchecked")
-		List<EDoc_Category> ecList = HibernateSessionFactory.getSession().createQuery("from EDoc_Category ec where ec.id = "+id).list();
+		List<EDoc_Category> ecList = HibernateSessionFactory.getSession().createQuery("from EDoc_Category").list();
 		for(EDoc_Category ec:ecList) {
 			Set<EDoc_Entry> enSet = ec.getDocEntrys();
 			for(EDoc_Entry ee:enSet) {
