@@ -10,7 +10,7 @@
 <title>添加页面</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath }/add/add.action" method="post">
+<form action="${pageContext.request.contextPath }/query/add.action" method="post">
 <table >
 		<tr>
 			<td>

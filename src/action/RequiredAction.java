@@ -1,10 +1,7 @@
 package action;
 
-import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
@@ -13,6 +10,7 @@ import org.hibernate.Transaction;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import daoIMPL.ActionServiceDaoImpl;
 import entity.EDoc_Category;
 import entity.EDoc_Entry;
 import util.HibernateSessionFactory;
@@ -28,7 +26,7 @@ public class RequiredAction extends ActionSupport{
 	private static final long serialVersionUID = 5294380527260919605L;
 	Session session = HibernateSessionFactory.getSession();
 	Transaction ts = session.getTransaction();
-	private EDoc_Entry enli;
+	private EDoc_Entry enli = new EDoc_Entry();
 	Logger logger = (Logger)LogManager.getLogger();
 	@SuppressWarnings("unchecked")
 	public String execute() {
@@ -44,24 +42,21 @@ public class RequiredAction extends ActionSupport{
 		
 	}
 
-	public String add(EDoc_Entry enli) {
+	public String addItem() {
 		
-		
-		if(new daoIMPL.ActionServiceDaoImpl().addItem(enli)) {
+		ActionServiceDaoImpl tempObj = new daoIMPL.ActionServiceDaoImpl();
+		if(tempObj.addItem(enli)) {
 			//成功
 			logger.debug("成功添加");
 			return SUCCESS;
 			
 		}else {
 			//失败
+			logger.debug("失败");
 			return INPUT;
 			
 			
 		}
-		
-		
-	
-		
 		
 		
 	}
