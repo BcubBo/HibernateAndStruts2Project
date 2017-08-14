@@ -1,8 +1,11 @@
 package daoIMPL;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.hibernate.Session;
@@ -52,7 +55,7 @@ public class ActionServiceDaoImpl implements ActionService{
 	}
 
 	@Override
-	public boolean list(String id) {
+	public Map<String,Object> list(int id) {
 		
 		@SuppressWarnings("unchecked")
 		List<EDoc_Category> ecList = HibernateSessionFactory.getSession().createQuery("from EDoc_Category ec where ec.id = "+id).list();
@@ -63,16 +66,19 @@ public class ActionServiceDaoImpl implements ActionService{
 			}
 		}
 		@SuppressWarnings("unchecked")
-		List<String> eeList = HibernateSessionFactory.getSession().createQuery("select ee.docCategory.name from EDoc_Entry ee where ee.docCategory.id = "+id).list();
-		for(String ee:eeList) {
+		List<EDoc_Entry> eeList = HibernateSessionFactory.getSession().createQuery("from EDoc_Entry ee where ee.docCategory.id = "+id).list();
+		for(EDoc_Entry ee:eeList) {
 			
-			System.out.println("结果:"+ee);
+			System.out.println("结果:"+ee.getSummary());
 			
 		}
+		infosList = eeList;
+		CategorysList = ecList;
+		Map<String,Object> maps = new HashMap<String,Object>();
+		maps.put("info", infosList);
+		maps.put("cate",CategorysList);
 		
-		
-		
-		return false;
+		return maps;
 	}
 
 	public List<EDoc_Entry> getInfosList() {
