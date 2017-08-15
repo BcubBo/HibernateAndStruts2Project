@@ -91,7 +91,7 @@
 
 </form>
 
-<form action="${pageContext.request.contextPath }/query/list" method="post">
+<form action="${pageContext.request.contextPath }/query/query?id=1" method="post">
 	<table><tr><td><input type="submit" value="返回"/></td></tr></table>
 	
 </form>

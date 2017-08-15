@@ -68,7 +68,7 @@ public class RequiredAction extends ActionSupport{
 			
 			id=enli.getId();
 			logger.debug("成功添加");
-			return SUCCESS;
+			return String.valueOf(id);
 			
 		}else {
 			//失败
