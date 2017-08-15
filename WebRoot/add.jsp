@@ -8,6 +8,40 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>添加页面</title>
+<style type="text/css">
+
+	td{
+		
+		 border: 1px green solid;
+		 text-align: center;
+	
+	}
+
+	
+	strong{
+	
+		color:yellowgreen;
+		font-size:20px;
+		
+	
+	}
+	
+	table{
+		
+		align:center; 
+		border:3px black solid;
+		width:auto;
+		height:auto;
+	
+	
+	
+	}
+
+	
+	
+	
+
+</style>
 </head>
 <body>
 <form action="${pageContext.request.contextPath }/query/add.action" method="post">
@@ -35,9 +69,15 @@
 		</tr>
 
 	</table>
-	<input type="submit" value="提交"/>
-	
 
+		<s:select label="查询的类别IT类型" 
+			name="id"
+			list="CategorysList"
+			listKey="id"
+			listValue="name"
+		></s:select>	
+<ss:datetimepicker  label="创建时间"></ss:datetimepicker>
+	<input type="submit" value="提交"/>
 </form>
 <form action="${pageContext.request.contextPath }/query/list" method="post">
 	<input type="submit" value="返回"/>

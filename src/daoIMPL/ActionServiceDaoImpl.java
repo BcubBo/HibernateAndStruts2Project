@@ -31,19 +31,34 @@ public class ActionServiceDaoImpl implements ActionService{
 					ts.begin();
 					EDoc_Entry ee1 = new EDoc_Entry();
 					Set<EDoc_Entry> eeSet = new HashSet<EDoc_Entry>();
-					ee1.setCategoryid(1);
+					ee1.setCategoryid(enli.getCategoryid());
+					//
 					ee1.setCreatedate(new Date());
+					//
 					logger.debug("enli中:"+enli.getTitle());
+					//
 					ee1.setTitle(enli.getTitle());
+					//
 					ee1.setSummary(enli.getSummary());
+					//
 					ee1.setUploaduser(enli.getUploaduser());
+					//
 					eeSet.add(ee1);
+					//
 					EDoc_Category ec1 = new EDoc_Category();
+					//
 					ec1.setDocEntrys(eeSet);
+					//
 					ec1.setName("testTitle2");
+					//
+					ec1.setId(enli.getCategoryid());
+					//
 					ee1.setDocCategory(ec1);
-					session.save(ec1);
+					//
+					session.save(ee1);
+					//
 					ts.commit();
+					//
 					flag = true;
 					
 					
@@ -87,6 +102,26 @@ public class ActionServiceDaoImpl implements ActionService{
 		
 		return maps;
 	}
+	/////
+	
+	public Map<String, Object> listAll() {
+		@SuppressWarnings("unchecked")
+		List<EDoc_Category> ecList = HibernateSessionFactory.getSession().createQuery("from EDoc_Category").list();
+		for(EDoc_Category ec:ecList) {
+			
+			
+				System.out.println("listAll结果:"+ec.getName());
+			
+		}
+		Map<String,Object> listAllmaps = new HashMap<String,Object>();
+		CategorysList = ecList;
+		//
+		listAllmaps.put("cate",CategorysList);
+		//
+		
+		return listAllmaps;
+	}
+
 
 	public List<EDoc_Entry> getInfosList() {
 		return infosList;
@@ -103,6 +138,7 @@ public class ActionServiceDaoImpl implements ActionService{
 	public void setCategorysList(List<EDoc_Category> categorysList) {
 		CategorysList = categorysList;
 	}
+
 
 	
 	

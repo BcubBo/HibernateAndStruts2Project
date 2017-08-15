@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -41,7 +42,16 @@ public class RequiredAction extends ActionSupport{
 		
 		
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	public String listAll() {
+		Map<String,Object> listAllmaps = new daoIMPL.ActionServiceDaoImpl().listAll();
+		CategorysList = (List<EDoc_Category>)listAllmaps.get("cate");
+		
+		return SUCCESS;
+		
+		
+	}
 	public String addItem() {
 		
 		ActionServiceDaoImpl tempObj = new daoIMPL.ActionServiceDaoImpl();

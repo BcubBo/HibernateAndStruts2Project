@@ -12,10 +12,11 @@
 			<result name="input">/add.jsp</result>
 		</action>
 		<action name="add" class="action.RequiredAction" method="addItem">
-				<result type="redirectAction">
-					<param name="actionName">query?id=1</param>
-				</result>
+				<result >/query</result>
 				<result name="input">/add.jsp</result>
+		</action>
+		<action name="listAll" class="action.RequiredAction" method="listAll">
+			<result>/add.jsp</result>
 		</action>
 	</package>
 	

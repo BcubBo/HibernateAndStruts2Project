@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script>
 <title>展示页面</title>
 <style type="text/css">
 
@@ -41,10 +42,41 @@
 	
 
 </style>
+<script type="text/javascript">
+
+	function addCheck(){
+
+
+		if($("#add").attr("name")=="add" ){
+				alert("进入块");
+				alert($("option").attr("selected"));
+				if($("option").attr("selected")=="selected"){
+					alert($("option").val());	
+					$("#hidden").val($("option").val());
+					alert($("#hidden").val());
+					return true;
+				};
+				
+				//冗余
+			}else{
+
+				return false;
+					
+
+				}
+
+
+
+
+
+	}
+
+
+</script>
 </head>
 <body style="background-color:buttonface">
 
-<s:form action="%{path}query/query.action">
+<s:form action="/query/query.action">
 
 		<s:select label="查询的类别IT类型" 
 			name="id"
@@ -53,9 +85,13 @@
 			listValue="name"
 		></s:select>
 	<s:submit value="查询"></s:submit>
+	
+
+	
 </s:form>
-<s:form action="%{path}/add.jsp">
-	<input type="submit" name="add" value="添加信息"/>
+<s:form action="/query/listAll">
+	<input type="submit" name="add"  id="add" value="添加信息" onclick="return addCheck()"/>
+	<input type="hidden" name="id" id="hidden" value=""/>	
 </s:form>
 
 	<table >
