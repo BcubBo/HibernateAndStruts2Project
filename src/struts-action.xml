@@ -12,7 +12,7 @@
 			<result name="input">/add.jsp</result>
 		</action>
 		<action name="add" class="action.RequiredAction" method="addItem">
-				<result >/query</result>
+				<result >/list.jsp</result>
 				<result name="input">/add.jsp</result>
 		</action>
 		<action name="listAll" class="action.RequiredAction" method="listAll">

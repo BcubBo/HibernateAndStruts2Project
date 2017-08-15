@@ -16,7 +16,7 @@
         <property name="name" type="java.lang.String" not-null="false">
             <column name="NAME" />
         </property>
-        <set name="docEntrys" table="EDOC_ENTRY" inverse="false" lazy="false" cascade="all">
+        <set name="docEntrys" table="EDOC_ENTRY" inverse="true" lazy="false" cascade="all">
             <key>
                 <column name="CATEGORYID" />
             </key>

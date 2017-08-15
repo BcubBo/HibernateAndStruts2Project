@@ -36,6 +36,12 @@
 	
 	
 	}
+	select option{
+		
+		 border: 1px green solid;
+		 text-align: center;
+	
+	}
 
 	
 	
@@ -62,26 +68,32 @@
 		</tr>
 		<tr>
 			<td>
-			<strong>
-				上传人<input type="text" name="enli.uploaduser">
-			</strong>
+				<strong>
+					上传人<input type="text" name="enli.uploaduser">
+				</strong>
 			</td>
 		</tr>
-
+		<tr>
+			<td>
+					<s:select label="查询的类别IT类型" 
+						name="id"
+						list="CategorysList"
+						listKey="id"
+						listValue="name"
+					></s:select>
+			</td>			
+		</tr>
+		<tr>
+				<td><input type="submit" value="提交"/>
+				</td>
+		</tr>
 	</table>
 
-		<s:select label="查询的类别IT类型" 
-			name="id"
-			list="CategorysList"
-			listKey="id"
-			listValue="name"
-		></s:select>	
-<ss:datetimepicker  label="创建时间"></ss:datetimepicker>
-	<input type="submit" value="提交"/>
 </form>
-<form action="${pageContext.request.contextPath }/query/list" method="post">
-	<input type="submit" value="返回"/>
 
+<form action="${pageContext.request.contextPath }/query/list" method="post">
+	<table><tr><td><input type="submit" value="返回"/></td></tr></table>
+	
 </form>
 </body>
 </html>

@@ -24,14 +24,17 @@ public class ActionServiceDaoImpl implements ActionService{
 	private List<EDoc_Entry> infosList ;
 	private List<EDoc_Category>	CategorysList;
 	Logger logger =(Logger)LogManager.getLogger();
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean addItem(EDoc_Entry enli) {
 		boolean flag = false;
+		List<EDoc_Category> ecList = HibernateSessionFactory.getSession().createQuery("from EDoc_Category").list();
 		try {
 					ts.begin();
 					EDoc_Entry ee1 = new EDoc_Entry();
 					Set<EDoc_Entry> eeSet = new HashSet<EDoc_Entry>();
-					ee1.setCategoryid(enli.getCategoryid());
+					logger.debug("进入设置CategoryId语句前边");
+					logger.debug("设置CategoryId成功:"+ee1.getCategoryid());
 					//
 					ee1.setCreatedate(new Date());
 					//
@@ -45,15 +48,26 @@ public class ActionServiceDaoImpl implements ActionService{
 					//
 					eeSet.add(ee1);
 					//
+					
 					EDoc_Category ec1 = new EDoc_Category();
-					//
-					ec1.setDocEntrys(eeSet);
-					//
-					ec1.setName("testTitle2");
-					//
-					ec1.setId(enli.getCategoryid());
-					//
+					for(EDoc_Category ecy:ecList) {
+						
+						if(ecy.getId()==enli.getCategoryid()) {
+							
+							ec1=ecy;
+							logger.debug("找到对应的EDoc_Category");
+							ee1.setCategoryid(ecy.getId());
+							
+						}
+						
+						
+						
+					}
 					ee1.setDocCategory(ec1);
+					ec1.setDocEntrys(eeSet);
+					//互相赋值，cascade属性的作用，设置为all并且inverse的一方也要进行相应的操作
+					logger.debug("ActionServiceImpl中EDoc_Category设置id为:"+ec1.getId()+"名字为:"+ec1.getName()+"CategoryId为:"+ee1.getCategoryid());
+
 					//
 					session.save(ee1);
 					//
@@ -64,8 +78,10 @@ public class ActionServiceDaoImpl implements ActionService{
 					
 				}catch(Exception e) {
 					if(session!=null) {
+						logger.debug("插入数据失败，回滚");
 						ts.rollback();
 						flag =false;
+						logger.debug("回滚成功");
 					}
 					e.printStackTrace();
 			

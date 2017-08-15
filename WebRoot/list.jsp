@@ -48,8 +48,8 @@
 
 
 		if($("#add").attr("name")=="add" ){
-				alert("进入块");
-				alert($("option").attr("selected"));
+				//alert("进入块");
+				//alert($("option").attr("selected"));
 				if($("option").attr("selected")=="selected"){
 					alert($("option").val());	
 					$("#hidden").val($("option").val());
@@ -90,8 +90,7 @@
 	
 </s:form>
 <s:form action="/query/listAll">
-	<input type="submit" name="add"  id="add" value="添加信息" onclick="return addCheck()"/>
-	<input type="hidden" name="id" id="hidden" value=""/>	
+	<input type="submit" name="add"  id="add" value="添加信息" />
 </s:form>
 
 	<table >

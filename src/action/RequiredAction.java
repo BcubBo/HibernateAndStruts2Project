@@ -9,6 +9,7 @@ import org.apache.struts2.ServletActionContext;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import daoIMPL.ActionServiceDaoImpl;
@@ -52,11 +53,20 @@ public class RequiredAction extends ActionSupport{
 		
 		
 	}
+	@SuppressWarnings("unchecked")
 	public String addItem() {
-		
+		enli.setCategoryid(id);
 		ActionServiceDaoImpl tempObj = new daoIMPL.ActionServiceDaoImpl();
+		Map<String,Object> request = (Map<String,Object>)ActionContext.getContext().get("request");
+		logger.debug("设置enli的id之前的对象的id值为:"+enli.getId());
+		request.put("id", id);
+		logger.debug("设置enli的id之后的对象的id和name的值为:"+enli.getId()+"\t"+enli.getTitle());
+		enli.setId(id);
 		if(tempObj.addItem(enli)) {
 			//成功
+
+			
+			id=enli.getId();
 			logger.debug("成功添加");
 			return SUCCESS;
 			
